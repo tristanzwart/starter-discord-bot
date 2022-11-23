@@ -1,4 +1,5 @@
-
+const Discord = require('discord.js');
+const client = new Discord.Client();
 // const { clientId, guildId, token, publicKey } = require('./config.json');
 require('dotenv').config()
 const APPLICATION_ID = process.env.APPLICATION_ID 
