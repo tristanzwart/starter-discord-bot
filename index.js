@@ -100,6 +100,24 @@ app.get('/register_commands', async (req,res) =>{
     return res.send(`${e.code} error from discord`)
   }
 })
+client.on('guildCreate', (guild) => {
+  const { id } = guild;
+  // do something with id
+	try
+  {
+    // api docs - https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
+    let discord_response = await discord_api.put(
+      `/applications/${APPLICATION_ID}/guilds/${id}/commands`,
+      slash_commands
+    )
+    console.log(discord_response.data)
+    return res.send('commands have been registered')
+  }catch(e){
+    console.error(e.code)
+    console.error(e.response?.data)
+    return res.send(`${e.code} error from discord`)
+  }
+});
 
 
 app.get('/', async (req,res) =>{
