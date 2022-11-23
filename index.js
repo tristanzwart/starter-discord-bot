@@ -100,7 +100,7 @@ app.get('/register_commands', async (req,res) =>{
     return res.send(`${e.code} error from discord`)
   }
 })
-client.on('guildCreate', (guild) => {
+client.on('guildCreate', async (guild) => {
   const { id } = guild;
   // do something with id
 	try
